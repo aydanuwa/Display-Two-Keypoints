@@ -3,6 +3,7 @@ package com.example.displayTwoKeypoints;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.TextureView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"};
     TextureView textureView;
     MediaPlayer mp=new MediaPlayer(); // MediaPlayer
+
+
 
 
     public int [][] keypoints1000Second = new int [1500][2]; // Info about keypoints: Second, i.e. thread, part
@@ -126,6 +129,19 @@ public class MainActivity extends AppCompatActivity {
             for(y = -radius4; y <= radius4; y++){
                 maskS4[x + radius4][y + radius4] = Math.exp(-(x * x + y * y)/ (2.0 * sigma4 * sigma4)) / (2.0 * Math.PI * sigma4 * sigma4);
             }
+        }
+        DisplayKeyPoints();
+
+
+    }
+
+    public void DisplayKeyPoints()
+    {
+        try {
+            file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + fileSeparator + "MyFaces" + fileSeparator + "OInput.jpg");
+        }
+        catch (Exception e){
+            Log.i(TAG, "Exception " + e);
         }
     }
 
