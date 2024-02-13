@@ -1,7 +1,9 @@
 package com.example.displayTwoKeypoints;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.TextureView;
@@ -138,7 +140,23 @@ public class MainActivity extends AppCompatActivity {
     public void DisplayKeyPoints()
     {
         try {
+            //opening the image to put marks for keypoints
             file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + fileSeparator + "MyFaces" + fileSeparator + "OInput.jpg");
+            bmOut = BitmapFactory.decodeFile(file.getPath());
+            Log.i(TAG, "We have bitmap");
+            //saving the bitmap to the disk to see what we have from camera
+            width = bmOut.getWidth();
+            height =bmOut.getHeight();
+            Log.i(TAG, "Width =  " + width + " Height =  " + height);
+
+            if(height < width) {
+                height = Math.round(maxRes * height /width);
+                width =maxRes;
+            }
+            else {
+                width = Math.round(maxRes * width / height);
+                height =maxRes;
+            }
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
