@@ -2,6 +2,7 @@ package com.example.displayTwoKeypoints;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -159,8 +160,13 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.i(TAG, "New width =  " + width + "  New height =  " + height);
             bmOut = Bitmap.createScaledBitmap(bmOut, width, height, true); // scaling bitmap to maxRes pixels; true -bilinear filtering for better image
-                for(x = 0, x < width, x++)
-
+                for(x = 0; x < width; x++)
+                    for(y = 0; y < height; y++) {
+                        pixel = bmOut.getPixel(x,y); //get pixel colors
+                        greyC[x][y] = 0.21 * Color.red(pixel) + 0.72 * Color.green(pixel) + 0.07 * Color.blue(pixel);
+                        i = (int)Math.round(greyC[x][y]);
+                        bmOut.setPixel(x, y, Color.argb(255, i, i, i));
+                    }
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
