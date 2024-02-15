@@ -12,6 +12,7 @@ import android.view.TextureView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class MainActivity extends AppCompatActivity {
@@ -167,6 +168,12 @@ public class MainActivity extends AppCompatActivity {
                         i = (int)Math.round(greyC[x][y]);
                         bmOut.setPixel(x, y, Color.argb(255, i, i, i));
                     }
+                file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + fileSeparator + "Temp" + fileSeparator + "CameraBlured.jpg");
+                out = new FileOutputStream(file);
+                bmOut.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+                Log.i(TAG, "Temporary file was saved");
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
