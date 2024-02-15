@@ -157,6 +157,10 @@ public class MainActivity extends AppCompatActivity {
                 width = Math.round(maxRes * width / height);
                 height =maxRes;
             }
+            Log.i(TAG, "New width =  " + width + "  New height =  " + height);
+            bmOut = Bitmap.createScaledBitmap(bmOut, width, height, true); // scaling bitmap to maxRes pixels; true -bilinear filtering for better image
+                for(x = 0, x < width, x++)
+
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
