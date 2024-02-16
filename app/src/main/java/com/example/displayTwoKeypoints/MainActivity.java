@@ -202,6 +202,15 @@ public class MainActivity extends AppCompatActivity {
                     bmOut.setPixel(i + 1, j + x, Color.argb(255, 64, 224, 208));
                 }
 
+                sigma0 =(xk[7] - xk[10])/3;
+                sigma1 =(yk[7] - yk[10])/3;
+
+                xk[6] = xk[7] + sigma0;
+                yk[6] = yk[7] + sigma1;
+
+                xk[0] = xk[6]- sigma1;
+                yk[0] = yk[6] + sigma0;
+
 
         }
         catch (Exception e){
