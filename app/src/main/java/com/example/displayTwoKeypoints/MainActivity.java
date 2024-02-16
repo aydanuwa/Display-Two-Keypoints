@@ -177,10 +177,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i(TAG, "Final width:  " + width + "  Final height:  " + height );
 
-
+                i = 1006; j =961;
                 xk[7] = i;
                 yk[7] = j;
-                for(x = -10; x <= 10; x++){
+                for(x = -10; x <= 10; x++) {
                     bmOut.setPixel(i + x, j - 1, Color.argb(255, 64, 224, 208)); // turquoise color: rgb(64,224,208)
                     bmOut.setPixel(i + x, j, Color.argb(255, 64, 224, 208));
                     bmOut.setPixel(i + x, j + 1, Color.argb(255, 64, 224, 208));
@@ -188,6 +188,21 @@ public class MainActivity extends AppCompatActivity {
                     bmOut.setPixel(i, j + x, Color.argb(255, 64, 224, 208));
                     bmOut.setPixel(i + 1, j + x, Color.argb(255, 64, 224, 208));
                 }
+
+
+                i = 352; j =961;
+                xk[10] = i;
+                yk[10] = j;
+                for(x = -10; x <= 10; x ++){
+                    bmOut.setPixel(i + x, j - 1, Color.argb(255, 64, 224, 208)); // turquoise color: rgb(64,224,208)
+                    bmOut.setPixel(i + x, j, Color.argb(255, 64, 224, 208));
+                    bmOut.setPixel(i + x, j + 1, Color.argb(255, 64, 224, 208));
+                    bmOut.setPixel(i - 1, j + x, Color.argb(255, 64, 224, 208));
+                    bmOut.setPixel(i, j + x, Color.argb(255, 64, 224, 208));
+                    bmOut.setPixel(i + 1, j + x, Color.argb(255, 64, 224, 208));
+                }
+
+
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
