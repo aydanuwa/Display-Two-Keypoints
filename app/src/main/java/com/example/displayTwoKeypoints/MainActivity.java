@@ -213,8 +213,12 @@ public class MainActivity extends AppCompatActivity {
                 xk[25] = xk[0] - sigma1 + sigma0; yk[25] = yk[0] + sigma0 + sigma1;
                 xk[11] = xk[10] - sigma0; yk[11] = yk[10] - sigma1;
                 xk[5] = xk[11] - sigma1; yk[5] = yk[11] + sigma0;
-
-
+// Top right
+                xk[26] = xk[5] - sigma1 - sigma0; yk[26] = yk[5] + sigma0 - sigma1;
+// Bottom left
+                xk[27] = xk[6] + 5.0 * sigma1 + sigma0; yk[27] = yk[6] - 5.0 * sigma0 + sigma1;
+// Bottom right
+                xk[28] = xk[11] + 5.0 * sigma1 - sigma0; yk[28] = yk[11] + 5.0 * sigma0 - sigma1;
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
