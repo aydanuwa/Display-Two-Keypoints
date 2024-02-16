@@ -202,14 +202,17 @@ public class MainActivity extends AppCompatActivity {
                     bmOut.setPixel(i + 1, j + x, Color.argb(255, 64, 224, 208));
                 }
 
-                sigma0 =(xk[7] - xk[10])/3;
-                sigma1 =(yk[7] - yk[10])/3;
+                sigma0 =(xk[7] - xk[10])/3; sigma1 =(yk[7] - yk[10])/3;
 
-                xk[6] = xk[7] + sigma0;
-                yk[6] = yk[7] + sigma1;
+                xk[6] = xk[7] + sigma0; yk[6] = yk[7] + sigma1;
 
-                xk[0] = xk[6]- sigma1;
-                yk[0] = yk[6] + sigma0;
+                xk[0] = xk[6]- sigma1; yk[0] = yk[6] + sigma0;
+
+// Checking borders. They must be positive and less than width and height
+// Top left
+                xk[25] = xk[0] - sigma1 + sigma0; yk[25] = yk[0] + sigma0 + sigma1;
+                xk[11] = xk[10] - sigma0; yk[11] = yk[10] - sigma1;
+                xk[5] = xk[11] - sigma1; yk[5] = yk[11] + sigma0;
 
 
         }
