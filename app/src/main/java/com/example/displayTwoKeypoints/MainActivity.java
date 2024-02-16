@@ -219,6 +219,14 @@ public class MainActivity extends AppCompatActivity {
                 xk[27] = xk[6] + 5.0 * sigma1 + sigma0; yk[27] = yk[6] - 5.0 * sigma0 + sigma1;
 // Bottom right
                 xk[28] = xk[11] + 5.0 * sigma1 - sigma0; yk[28] = yk[11] + 5.0 * sigma0 - sigma1;
+
+                //write XkYk1st method
+                for(pixel = 0; pixel < 18; pixel ++) { //calculating average intensities and drawing circles
+                    radius0 = (int) Math.round(xk[pixel] - sigma4);
+                    if(radius0 < Math.round(xk[pixel] - sigma4)) radius0 ++ ;
+                    radius1 = (int) Math.round(yk[pixel] - sigma4);
+                    if(radius1 < Math.round(yk[pixel] - sigma4)) radius1 ++;
+                }
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
