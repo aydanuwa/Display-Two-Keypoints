@@ -222,10 +222,14 @@ public class MainActivity extends AppCompatActivity {
 
                 //write XkYk1st method
                 for(pixel = 0; pixel < 18; pixel ++) { //calculating average intensities and drawing circles
-                    radius0 = (int) Math.round(xk[pixel] - sigma4);
-                    if(radius0 < Math.round(xk[pixel] - sigma4)) radius0 ++ ;
-                    radius1 = (int) Math.round(yk[pixel] - sigma4);
-                    if(radius1 < Math.round(yk[pixel] - sigma4)) radius1 ++;
+                    radius0 = (int) Math.round(xk[pixel] - sigma4); //The top x coordinate within the circle, 0 keypoints
+                    if(radius0 < Math.round(xk[pixel] - sigma4)) radius0 ++ ; // adjusting x coordinate to be inside the circle
+                    radius1 = (int) Math.round(yk[pixel] - sigma4); // The most left coordinate y within the circle, 0 keypoints
+                    if(radius1 < Math.round(yk[pixel] - sigma4)) radius1 ++; // adjusting y coordinate to be inside the circle
+                    radius2 = (int) Math.round(xk[pixel] + sigma4); // The bottom x coordinate within the circle, 0 keypoints
+                    if(radius2 < Math.round(xk[pixel] + sigma4)) radius2 ++; // adjusting x coordinate to be outside the circle - nearest largest integer: to speed the following loopp
+                    radius3 = (int) Math.round(yk[pixel] + sigma4); // The most right coordinate y within the circle, 0 keypoints
+                    if(radius3 < Math.round(yk[pixel] + sigma4)) radius3 ++; // adjusting y coordinate to be outside the circle - nearest largest integer: to speed the following loopp
                 }
         }
         catch (Exception e){
