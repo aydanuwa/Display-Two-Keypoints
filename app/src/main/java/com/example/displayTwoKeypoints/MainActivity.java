@@ -241,8 +241,32 @@ public class MainActivity extends AppCompatActivity {
                                 bmOut.setPixel(i, j, Color.argb(244, 64, 224, 208));
                             }
                     if (k != 0) IC[pixel] = IC[pixel]/k;
-                    Log.i(TAG, "Average intensity for keypoint " + pixel + ": ") + IC[pixel] + " ;   Number of pixels:  " + k);
+                    Log.i(TAG, "Average intensity for keypoint " + pixel +" : " + IC[pixel] + " ;  Number of pixels: " + k);
                 }
+                sigma4 = sigma4 *1.5; //radius of the circle around the point, 1st and 2nd levels
+                for(pixel = 18; pixel < 22; pixel ++){
+                    radius0 = (int) Math.round(xk[pixel] - sigma4);
+                    if(radius0 < Math.round(xk[pixel] - sigma4)) radius0++;
+                    radius1 = (int) Math.round(yk[pixel] - sigma4);
+                    if(radius1 < Math.round(yk[pixel] - sigma4)) radius1++;
+                    radius2 = (int) Math.round(xk[pixel] + sigma4);
+                    if(radius2 < Math.round(xk[pixel] + sigma4)) radius2++;
+                    radius3 = (int) Math.round(yk[pixel] + sigma4);
+                    if(radius3 < Math.round(xk[pixel] + sigma4)) radius3++;
+
+                    IC[pixel] = 0; //average intencity of the circle around keypoint 0
+                    k = 0; //number of the pixels inside the circle around keypoint
+                    for(i = radius0; i < radius2; i++)
+                        for(j = radius1; j < radius3; j++)
+                            if(Math.sqrt((i - xk[pixel]) * (i - xk[pixel]) + (j - yk[pixel]) * (j - yk[pixel])) <= sigma4 ){
+                                k++;
+                                IC[pixel] = IC[pixel] +greyC[i][j];
+                                bmOut.setPixel(i, j, Color.argb(244, 64, 224, 208));
+                            }
+                    if (k != 0) IC[pixel] = IC[pixel]/k;
+                    Log.i(TAG, "Average intensity for keypoint " + pixel +" : " + IC[pixel] + " ;  Number of pixels: " + k);
+                }
+
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
