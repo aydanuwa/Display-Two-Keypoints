@@ -267,6 +267,29 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "Average intensity for keypoint " + pixel +" : " + IC[pixel] + " ;  Number of pixels: " + k);
                 }
 
+                sigma4 = sigma4 * 1.33333333333333333;
+                for (pixel=22;pixel<25;pixel++) { // We calculate average intensities and draw circles here
+                    radius0 = (int) Math.round(xk[pixel] - sigma4); // The top coordinate X within the circle, 0 keypoint
+                    if (radius0 < Math.round(xk[pixel] - sigma4)) radius0++; // We adjust the coordinate X to be inside the circle
+                    radius1 = (int) Math.round(yk[pixel] - sigma4); // The most left coordinate Y within the circle, 0 keypoint
+                    if (radius1 < Math.round(yk[pixel] - sigma4)) radius1++; // We adjust the coordinate Y to be inside the circle
+                    radius2 = (int) Math.round(xk[pixel] + sigma4); // The bottom coordinate X within the circle, 0 keypoint
+                    if (radius2 < Math.round(xk[pixel] + sigma4)) radius2++; // We adjust the coordinate X to be outside the circle - nearest largest integer: to speed the following loop
+                    radius3 = (int) Math.round(yk[pixel] + sigma4); // The most right Y coordinate within the circle, 0 keypoint
+                    if (radius3 < Math.round(yk[pixel] + sigma4)) radius3++; // We adjust the coordinate Y to be outside the circle - nearest largest integer: to speed the following loop
+                    IC[pixel] = 0; // Average intensity of the circle around keypoint 0
+                    k = 0; // Number of the pixels inside the circle around keypoint
+                    for (i = radius0; i < radius2; i++)
+                        for (j = radius1; j < radius3; j++)
+                            if (Math.sqrt((i - xk[pixel]) * (i - xk[pixel]) + (j - yk[pixel]) * (j - yk[pixel])) <= sigma4) {
+                                k++;
+                                IC[pixel] = IC[pixel] + greyC[i][j];
+                                bmOut.setPixel(i, j, Color.argb(255, 64, 224, 208)); // turquoise color: rgb(64,224,208)
+                            }
+                    if (k != 0) IC[pixel] = IC[pixel] / k;
+                    Log.i(TAG, "Average intensity for keypoint " + pixel +" : " + IC[pixel] + " ;  Number of pixels: " + k);
+                }
+
         }
         catch (Exception e){
             Log.i(TAG, "Exception " + e);
