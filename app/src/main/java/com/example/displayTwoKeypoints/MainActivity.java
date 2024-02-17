@@ -230,6 +230,18 @@ public class MainActivity extends AppCompatActivity {
                     if(radius2 < Math.round(xk[pixel] + sigma4)) radius2 ++; // adjusting x coordinate to be outside the circle - nearest largest integer: to speed the following loopp
                     radius3 = (int) Math.round(yk[pixel] + sigma4); // The most right coordinate y within the circle, 0 keypoints
                     if(radius3 < Math.round(yk[pixel] + sigma4)) radius3 ++; // adjusting y coordinate to be outside the circle - nearest largest integer: to speed the following loopp
+
+                    IC[pixel] = 0; //average intencity of the circle around keypoint 0
+                    k = 0; //number of the pixels inside the circle around keypoint
+                    for(i = radius0; i < radius2; i++)
+                        for(j = radius1; j < radius3; j++)
+                            if(Math.sqrt((i - xk[pixel]) * (i - xk[pixel]) + (j - yk[pixel]) * (j - yk[pixel])) <= sigma4 ){
+                                k++;
+                                IC[pixel] = IC[pixel] +greyC[i][j];
+                                bmOut.setPixel(i, j, Color.argb(244, 64, 224, 208));
+                            }
+                    if (k != 0) IC[pixel] = IC[pixel]/k;
+                    Log.i(TAG, "Average intensity for keypoint " + pixel + ": ") + IC[pixel] + " ;   Number of pixels:  " + k);
                 }
         }
         catch (Exception e){
