@@ -358,4 +358,67 @@ public class MainActivity extends AppCompatActivity {
         xk[24] = xk[22] + sigma1 - sigma0 * 0.5; yk[24] = yk[22] - sigma0 - sigma1 * 0.5;
         sigma4 = Math.sqrt((xk[10] - xk[7]) * (xk[10] - xk[7]) + (yk[10] - yk[7]) * (yk[10] - yk[7])) / 24; // radius of the circle around the point, 1st and 2nd levels
     }
+
+    public void XkYk2nd(){
+        sigma0 = sigma0 * 0.5;
+        sigma1 = sigma1 * 0.5;
+        xk[25] = xk[0] - sigma0; yk[25] = yk[0] - sigma1;
+        xk[26] = xk[1] - sigma0; yk[26] = yk[1] - sigma1;
+        xk[27] = xk[2] - sigma0; yk[27] = yk[2] - sigma1;
+        xk[28] = xk[3] - sigma0; yk[28] = yk[3] - sigma1;
+        xk[29] = xk[4] - sigma0; yk[29] = yk[4] - sigma1;
+        xk[30] = xk[6] - sigma1; yk[30] = yk[6] + sigma0;
+        xk[31] = xk[30] - sigma0; yk[31] = yk[30] - sigma1;
+        xk[32] = xk[31] - sigma0; yk[32] = yk[31] - sigma1;
+        xk[33] = xk[32] - sigma0; yk[33] = yk[32] - sigma1;
+        xk[34] = xk[33] - sigma0; yk[34] = yk[33] - sigma1;
+        xk[35] = xk[34] - sigma0; yk[35] = yk[34] - sigma1;
+        xk[36] = xk[35] - sigma0; yk[36] = yk[35] - sigma1;
+        xk[37] = xk[36] - sigma0; yk[37] = yk[36] - sigma1;
+        xk[38] = xk[37] - sigma0; yk[38] = yk[37] - sigma1;
+        xk[39] = xk[38] - sigma0; yk[39] = yk[38] - sigma1;
+        xk[40] = xk[39] - sigma0; yk[40] = yk[39] - sigma1;
+        xk[41] = xk[6] - sigma0; yk[41] = yk[6] - sigma1;
+        xk[42] = xk[7] - sigma0; yk[42] = yk[7] - sigma1;
+        xk[43] = xk[8] - sigma0; yk[43] = yk[8] - sigma1;
+        xk[44] = xk[9] - sigma0; yk[44] = yk[9] - sigma1;
+        xk[45] = xk[10] - sigma0; yk[45] = yk[10] - sigma1;
+        xk[46] = xk[12] - sigma1; yk[46] = yk[12] + sigma0;
+        xk[47] = xk[46] - sigma0; yk[47] = yk[46] - sigma1;
+        xk[48] = xk[47] - sigma0; yk[48] = yk[47] - sigma1;
+        xk[49] = xk[48] - sigma0; yk[49] = yk[48] - sigma1;
+        xk[50] = xk[49] - sigma0; yk[50] = yk[49] - sigma1;
+        xk[51] = xk[50] - sigma0; yk[51] = yk[50] - sigma1;
+        xk[52] = xk[51] - sigma0; yk[52] = yk[51] - sigma1;
+        xk[53] = xk[52] - sigma0; yk[53] = yk[52] - sigma1;
+        xk[54] = xk[53] - sigma0; yk[54] = yk[53] - sigma1;
+        xk[55] = xk[54] - sigma0; yk[55] = yk[54] - sigma1;
+        xk[56] = xk[55] - sigma0; yk[56] = yk[55] - sigma1;
+        xk[57] = xk[12] - sigma0; yk[57] = yk[12] - sigma1;
+        xk[58] = xk[13] - sigma0; yk[58] = yk[13] - sigma1;
+        xk[59] = xk[14] - sigma0; yk[59] = yk[14] - sigma1;
+        xk[60] = xk[15] - sigma0; yk[60] = yk[15] - sigma1;
+        xk[61] = xk[16] - sigma0; yk[61] = yk[16] - sigma1;
+        xk[62] = xk[57] + sigma1; yk[62] = yk[57] - sigma0;
+        xk[63] = xk[62] - sigma0; yk[63] = yk[62] - sigma1;
+        xk[64] = xk[63] - sigma0; yk[64] = yk[63] - sigma1;
+        xk[65] = xk[64] - sigma0; yk[65] = yk[64] - sigma1;
+        xk[66] = xk[65] - sigma0; yk[66] = yk[65] - sigma1;
+        xk[67] = xk[66] - sigma0; yk[67] = yk[66] - sigma1;
+        xk[68] = xk[67] - sigma0; yk[68] = yk[67] - sigma1;
+        xk[69] = xk[68] - sigma0; yk[69] = yk[68] - sigma1;
+        xk[70] = xk[69] - sigma0; yk[70] = yk[69] - sigma1;
+        xk[71] = xk[18] - sigma0; yk[71] = yk[18] - sigma1;
+        xk[72] = xk[19] - sigma0; yk[72] = yk[19] - sigma1;
+        xk[73] = xk[20] - sigma0; yk[73] = yk[20] - sigma1;
+        xk[74] = xk[71] + sigma1; yk[74] = yk[71] - sigma0;
+        xk[75] = xk[74] - sigma0; yk[75] = yk[74] - sigma1;
+        xk[76] = xk[75] - sigma0; yk[76] = yk[75] - sigma1;
+        xk[77] = xk[76] - sigma0; yk[77] = yk[76] - sigma1;
+        xk[78] = xk[77] - sigma0; yk[78] = yk[77] - sigma1;
+        xk[79] = xk[22] - sigma0; yk[79] = yk[22] - sigma1;
+        xk[80] = xk[22] + sigma1; yk[80] = yk[22] - sigma0;
+        xk[81] = xk[80] - sigma0; yk[81] = yk[80] - sigma1;
+        xk[82] = xk[81] - sigma0; yk[82] = yk[81] - sigma1;
+    }
 }
