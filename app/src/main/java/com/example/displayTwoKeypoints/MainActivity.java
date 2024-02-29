@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity {
     public int maxRes = 1360; // We scale our image to the resolution of maximum 1360 pixels
@@ -478,6 +479,25 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.i(TAG, i + " : " + ICdif[i][83] + "  " + ICdifDouble[i][83] + "  " + ICdif[i][84] + "  " + ICdifDouble[i][84] + "  " + ICdif[i][85] + "  " + ICdifDouble[i][85] + "  " + ICdif[i][86] + "  " + ICdifDouble[i][86] + "  " + ICdif[i][87] + "  " + ICdifDouble[i][87] + "  " + ICdif[i][88] + "  " + ICdifDouble[i][88] + "  " + ICdif[i][89] + "  " + ICdifDouble[i][89] + "  " + ICdif[i][90] + "  " + ICdifDouble[i][90] + "  " + ICdif[i][91] + "  " + ICdifDouble[i][91] + "  " + ICdif[i][92] + "  " + ICdifDouble[i][92] + "  " + ICdif[i][94] + "  " + ICdifDouble[i][94] + "  " + ICdif[i][95] + "  " + ICdifDouble[i][95] + "  " + ICdif[i][96] + "  " + ICdifDouble[i][96] + "  " + ICdif[i][97] + "  " + ICdifDouble[i][97] + "  " + ICdif[i][98] + "  " + ICdifDouble[i][98] + "  " + ICdif[i][99] + "  " + ICdifDouble[i][99] + "  " + ICdif[i][100] + "  " + ICdifDouble[i][100] + "  " + ICdif[i][101] + "  " + ICdifDouble[i][101] + "  " + ICdif[i][102] + "  " + ICdifDouble[i][102] + "  " + ICdif[i][103] + "  " + ICdifDouble[i][103]);
             }
+
+            file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath()+fileSeparator+"Temp"+fileSeparator+"ImageWithKeyPoints"+ maxRes + ".jpg");
+            out = new FileOutputStream(file);
+            bmOut.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush(); out.close();
+
+            //writing info about keypoint coordinates into the text file
+            file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath()+fileSeparator+"Temp"+fileSeparator+"KeyPoints"+maxRes+".txt");
+            file.createNewFile();
+            //second argument of FileOutputStream constructor indicates whether to append or create new file if one exists
+            FileOutputStream outputStream = new FileOutputStream(file, false);
+            PrintWriter writer = new PrintWriter(outputStream);
+            writer.println(Integer.toString(nk)); writer.println("");
+            for (i=0;i<nk;i++) { // nk is the number of keypoints
+                writer.println(keypoints1000[i][0]); // X coordinate
+                writer.println(keypoints1000[i][1]); // Y coordinate
+                writer.println("");
+            }
+            writer.flush(); writer.close();
 
         } catch (Exception e) {
             Log.i(TAG, "Exception " + e);
