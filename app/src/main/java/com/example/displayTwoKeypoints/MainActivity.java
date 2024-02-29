@@ -460,6 +460,25 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, i + " : " + ICdif[i][25] + "  " + ICdifDouble[i][25] + "  " + ICdif[i][26] + "  " + ICdifDouble[i][26] + "  " + ICdif[i][27] + "  " + ICdifDouble[i][27] + "  " + ICdif[i][28] + "  " + ICdifDouble[i][28] + "  " + ICdif[i][29] + "  " + ICdifDouble[i][29] + "  " + ICdif[i][30] + "  " + ICdifDouble[i][30] + "  " + ICdif[i][31] + "  " + ICdifDouble[i][31] + "  " + ICdif[i][32] + "  " + ICdifDouble[i][32] + "  " + ICdif[i][33] + "  " + ICdifDouble[i][33] + "  " + ICdif[i][34] + "  " + ICdifDouble[i][34] + "  " + ICdif[i][35] + "  " + ICdifDouble[i][35] + "  " + ICdif[i][36] + "  " + ICdifDouble[i][36] + "  " + ICdif[i][37] + "  " + ICdifDouble[i][37] + "  " + ICdif[i][38] + "  " + ICdifDouble[i][38] + "  " + ICdif[i][39] + "  " + ICdifDouble[i][39] + "  " + ICdif[i][40] + "  " + ICdifDouble[i][40] + "  " + ICdif[i][41] + "  " + ICdifDouble[i][41] + "  " + ICdif[i][42] + "  " + ICdifDouble[i][42] + "  " + ICdif[i][43] + "  " + ICdifDouble[i][43] + "  " + ICdif[i][44] + "  " + ICdifDouble[i][44]);
             }
 
+            Log.i(TAG, "3rd level:");
+            for (i=83;i<291;i++) { // In this loop, we gonna sort the differences, 3rd level
+                for (j = 83; j < 291; j++) { // In this loop, we calculate differences, 3rd level
+                    ICdif[i][j] = j;
+                    ICdifDouble[i][j] = IC[i] - IC[j];
+                }
+                flagMin = 1;
+                while (flagMin == 1) {
+                    flagMin = 0;
+                    for (j = 83; j < 290; j++)
+                        if (Math.abs(ICdifDouble[i][j]) < Math.abs(ICdifDouble[i][j + 1])) {
+                            det = ICdifDouble[i][j]; ICdifDouble[i][j] = ICdifDouble[i][j + 1]; ICdifDouble[i][j + 1] = det;
+                            k = ICdif[i][j]; ICdif[i][j] = ICdif[i][j + 1]; ICdif[i][j + 1] = k;
+                            flagMin = 1;
+                        }
+                }
+                Log.i(TAG, i + " : " + ICdif[i][83] + "  " + ICdifDouble[i][83] + "  " + ICdif[i][84] + "  " + ICdifDouble[i][84] + "  " + ICdif[i][85] + "  " + ICdifDouble[i][85] + "  " + ICdif[i][86] + "  " + ICdifDouble[i][86] + "  " + ICdif[i][87] + "  " + ICdifDouble[i][87] + "  " + ICdif[i][88] + "  " + ICdifDouble[i][88] + "  " + ICdif[i][89] + "  " + ICdifDouble[i][89] + "  " + ICdif[i][90] + "  " + ICdifDouble[i][90] + "  " + ICdif[i][91] + "  " + ICdifDouble[i][91] + "  " + ICdif[i][92] + "  " + ICdifDouble[i][92] + "  " + ICdif[i][94] + "  " + ICdifDouble[i][94] + "  " + ICdif[i][95] + "  " + ICdifDouble[i][95] + "  " + ICdif[i][96] + "  " + ICdifDouble[i][96] + "  " + ICdif[i][97] + "  " + ICdifDouble[i][97] + "  " + ICdif[i][98] + "  " + ICdifDouble[i][98] + "  " + ICdif[i][99] + "  " + ICdifDouble[i][99] + "  " + ICdif[i][100] + "  " + ICdifDouble[i][100] + "  " + ICdif[i][101] + "  " + ICdifDouble[i][101] + "  " + ICdif[i][102] + "  " + ICdifDouble[i][102] + "  " + ICdif[i][103] + "  " + ICdifDouble[i][103]);
+            }
+
         } catch (Exception e) {
             Log.i(TAG, "Exception " + e);
         }
