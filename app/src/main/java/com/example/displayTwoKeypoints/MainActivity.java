@@ -485,7 +485,7 @@ public class MainActivity extends AppCompatActivity {
             bmOut.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush(); out.close();
 
-            //writing info about keypoint coordinates into the text file
+            //writing info about keypoints coordinates into the text file
             file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath()+fileSeparator+"Temp"+fileSeparator+"KeyPoints"+maxRes+".txt");
             file.createNewFile();
             //second argument of FileOutputStream constructor indicates whether to append or create new file if one exists
@@ -498,6 +498,13 @@ public class MainActivity extends AppCompatActivity {
                 writer.println("");
             }
             writer.flush(); writer.close();
+
+            // writing info about keypoints to the Descriptor.txt
+            file = new File(getApplicationContext().getExternalFilesDir(null).getAbsolutePath()+fileSeparator+"Temp"+fileSeparator+"Descriptor.txt");
+            file.createNewFile();
+            //second argument of FileOutputStream constructor indicates whether to append or create new file if one exists
+            outputStream = new FileOutputStream(file, false);
+            writer = new PrintWriter(outputStream);
 
         } catch (Exception e) {
             Log.i(TAG, "Exception " + e);
