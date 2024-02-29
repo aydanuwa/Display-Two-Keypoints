@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     public int maxRes = 1360; // We scale our image to the resolution of maximum 1360 pixels
@@ -505,6 +506,38 @@ public class MainActivity extends AppCompatActivity {
             //second argument of FileOutputStream constructor indicates whether to append or create new file if one exists
             outputStream = new FileOutputStream(file, false);
             writer = new PrintWriter(outputStream);
+
+            for (i=0;i<25;i++) { // storing first 25 points
+                writer.println(i); // Number of keypoint
+                for (j=0;j<12;j++){ // We store 12=2+10 comparisons
+                    writer.println(ICdif[i][j]); // writing a number of keypoint j that is used in comparison with keypoint i
+                    writer.println(ICdifDouble[i][j]); // writing a difference of the average intensities between keypoints i and j
+                }
+                writer.println(""); // An empty line is a separator
+            }
+
+            for (i=25;i<83;i++) { // storing 58 points
+                writer.println(i); // Number of keypoint
+                for (j=25;j<57;j++){ // We store 32=2+30 comparisons
+                    writer.println(ICdif[i][j]); // writing a number of keypoint j that is used in comparison with keypoint i
+                    writer.println(ICdifDouble[i][j]); // writing a difference of the average intensities between keypoints i and j
+                }
+                writer.println(""); // An empty line is a separator
+            }
+
+            for (i=83;i<291;i++) { // storing first 209 points
+                writer.println(i); // Number of keypoint
+                for (j=83;j<183;j++){ // We store 100 comparisons
+                    writer.println(ICdif[i][j]); // writing a number of keypoint j that is used in comparison with keypoint i
+                    writer.println(ICdifDouble[i][j]); // writing a difference of the average intensities between keypoints i and j
+                }
+                writer.println(""); // An empty line is a separator
+            }
+
+            writer.flush(); writer.close();
+
+            Log.i(TAG, "Marks were added into the image. Resolution : " + maxRes);
+            Log.i(TAG, "Time at the end = " + Calendar.getInstance().getTime());
 
         } catch (Exception e) {
             Log.i(TAG, "Exception " + e);
