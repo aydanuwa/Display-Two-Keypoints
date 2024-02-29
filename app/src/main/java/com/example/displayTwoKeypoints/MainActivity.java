@@ -421,6 +421,25 @@ public class MainActivity extends AppCompatActivity {
                 if (k != 0) IC[pixel] = IC[pixel] / k;
                 Log.i(TAG, "Average intensity for keypoint " + pixel +" : " + IC[pixel] + " ;  Number of pixels: " + k);
             }
+            // Sorting differences
+            Log.i(TAG, "1st level:");
+            for(i = 0; i <25; i++){ //sorting the differences in 1st level
+                for(j = 0; j < 25; j++){ // calculating differences in 1st level
+                    ICdif[i][j] =j;
+                    ICdifDouble[i][j] = IC[i] - IC[j];
+                }
+                flagMin = 1;
+                while (flagMin==1){
+                    flagMin=0;
+                    for (j=0; j<24; j++)
+                        if (Math.abs(ICdifDouble[i][j])<Math.abs(ICdifDouble[i][j+1])) {
+                            det = ICdifDouble[i][j]; ICdifDouble[i][j] = ICdifDouble[i][j+1]; ICdifDouble[i][j+1]=det;
+                            k=ICdif[i][j]; ICdif[i][j]=ICdif[i][j+1]; ICdif[i][j+1]=k;
+                            flagMin=1;
+                        }
+                }
+                Log.i(TAG, i + " : " + ICdif[i][0] + "  " + ICdifDouble[i][0] + "  " + ICdif[i][1] + "  " + ICdifDouble[i][1] + "  " + ICdif[i][2] + "  " + ICdifDouble[i][2] + "  " + ICdif[i][3] + "  " + ICdifDouble[i][3] + "  " + ICdif[i][4] + "  " + ICdifDouble[i][4] + "  " + ICdif[i][5] + "  " + ICdifDouble[i][5] + "  " + ICdif[i][6] + "  " + ICdifDouble[i][6] + "  " + ICdif[i][7] + "  " + ICdifDouble[i][7] + "  " + ICdif[i][8] + "  " + ICdifDouble[i][8] + "  " + ICdif[i][9] + "  " + ICdifDouble[i][9] + ICdif[i][10] + "  " + ICdifDouble[i][10] + "  " + ICdif[i][11] + "  " + ICdifDouble[i][11] + "  " + ICdif[i][12] + "  " + ICdifDouble[i][12] + "  " + ICdif[i][13] + "  " + ICdifDouble[i][13] + "  " + ICdif[i][14] + "  " + ICdifDouble[i][14] + "  " + ICdif[i][15] + "  " + ICdifDouble[i][15] + "  " + ICdif[i][16] + "  " + ICdifDouble[i][16] + "  " + ICdif[i][17] + "  " + ICdifDouble[i][17] + "  " + ICdif[i][18] + "  " + ICdifDouble[i][18] + "  " + ICdif[i][19] + "  " + ICdifDouble[i][19]);
+            }
 
         } catch (Exception e) {
             Log.i(TAG, "Exception " + e);
